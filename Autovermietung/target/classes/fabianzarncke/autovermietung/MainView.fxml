@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="690.0" prefWidth="1200.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fabianzarncke.autovermietung.MainController">
+   <children>
+      <Rectangle fill="DODGERBLUE" height="610.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: #ffffff;" width="300.0">
+         <effect>
+            <DropShadow color="#1c00c7" height="0.0" radius="24.5" width="100.0" />
+         </effect>
+      </Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: #1C00C7;" width="1200.0">
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" color="#1c00c7" height="200.0" radius="49.5" width="0.0" />
+         </effect>
+      </Rectangle>
+      <Button layoutX="25.0" layoutY="500.0" mnemonicParsing="false" onAction="#startRentalBTN" prefHeight="80.0" prefWidth="250.0" style="-fx-font-size: 40; -fx-padding: 0; -fx-background-color: #1C00C7; -fx-text-fill: #ffffff; -fx-border-style: none; -fx-border-radius: 10; -fx-background-radius: 10;" text="Start Rental">
+         <effect>
+            <DropShadow color="#1c00c7" height="50.0" radius="24.5" width="50.0" />
+         </effect></Button>
+      <ListView fx:id="ListView" layoutX="400.0" layoutY="200.0" onMouseClicked="#LSBTNviewObject" prefHeight="400.0" prefWidth="700.0" style="-fx-padding: 0; -fx-background-color: #ffffff; -fx-border-style: solid; -fx-border-color: #000000; -fx-border-width: 2;" />
+      <MenuButton layoutX="25.0" layoutY="170.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="250.0" style="-fx-font-size: 30; -fx-padding: 0; -fx-background-color: #ffffff; -fx-border-style: solid; -fx-border-radius: 10; -fx-border-color: #000000;" text="Vehicles">
+        <items>
+          <MenuItem mnemonicParsing="false" onAction="#addTruckBTN" text="add Truck" />
+          <MenuItem mnemonicParsing="false" onAction="#addCarBTN" text="add Car" />
+            <MenuItem mnemonicParsing="false" onAction="#addVanBTN" text="add Van" />
+            <MenuItem mnemonicParsing="false" onAction="#addTrailerBTN" text="add Trailer" />
+        </items>
+      </MenuButton>
+      <MenuButton layoutX="25.0" layoutY="345.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="250.0" style="-fx-font-size: 30; -fx-padding: 0; -fx-background-color: #ffffff; -fx-border-style: solid; -fx-border-radius: 10; -fx-border-color: #000000;" text="Customers">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#addPCustomerBTN" text="add Private Customer" />
+            <MenuItem mnemonicParsing="false" onAction="#addBCustomerBTN" text="add Business Customer" />
+         </items>
+      </MenuButton>
+      <Text layoutX="10.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #ffffff; -fx-font-size: 60; -fx-font-weight: bold;" text="CarRental" />
+      <MenuButton fx:id="ListviewMenuButton" layoutX="750.0" layoutY="150.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="350.0" style="-fx-font-size: 20; -fx-padding: 0; -fx-background-color: #ffffff; -fx-border-color: #000000; -fx-border-style: solid; -fx-border-width: 2;" text="choose List">
+        <items>
+          <MenuItem mnemonicParsing="false" onAction="#viewAllVehiclesBTN" text="all Vehicle" />
+          <MenuItem mnemonicParsing="false" onAction="#viewAllTrucksBTN" text="all Trucks" />
+            <MenuItem mnemonicParsing="false" onAction="#viewAllCarsBTN" text="all Cars" />
+            <MenuItem mnemonicParsing="false" onAction="#viewAllVansBTN" text="all Vans" />
+            <MenuItem mnemonicParsing="false" onAction="#viewAllTrailersBTN" text="all Trailers" />
+            <MenuItem mnemonicParsing="false" onAction="#viewAllCustomersBTN" text="all Customers" />
+            <MenuItem mnemonicParsing="false" onAction="#viewAllPCustomersBTN" text="all Private Customers" />
+            <MenuItem mnemonicParsing="false" onAction="#viewAllBCustomersBTN" text="all Business Customers" />
+            <MenuItem mnemonicParsing="false" onAction="#viewAllRentalsBTN" text="all Rentals" />
+        </items>
+      </MenuButton>
+      <Text layoutX="500.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #ffffff; -fx-font-size: 60;" text="Home" />
+      <TextField fx:id="searchbar" layoutX="400.0" layoutY="150.0" onKeyTyped="#startsearch" prefHeight="50.0" prefWidth="350.0" promptText="Search...                                        🔍" style="-fx-font-size: 20; -fx-border-color: #000000; -fx-border-radius: 0; -fx-border-width: 2;" />
+   </children>
+</AnchorPane>
