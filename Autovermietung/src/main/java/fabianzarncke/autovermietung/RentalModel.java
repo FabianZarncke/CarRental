@@ -23,7 +23,7 @@ public class RentalModel implements DataProvider{
     
     private String rentalnumber;
 
-    public RentalModel(VehicleModel vehicle, CustomerModel customer, String startdate, String starttime, String enddate, String endtime, double hours, String rentalnumber) {
+    public RentalModel(VehicleModel vehicle, CustomerModel customer, String startdate, String starttime, String enddate, String endtime, double hours) {
         this.vehicle = vehicle;
         this.customer = customer;
         this.startdate = startdate;
@@ -32,7 +32,13 @@ public class RentalModel implements DataProvider{
         this.endtime = endtime;
         this.hours = hours;
         calculatePrice();
-        this.rentalnumber = rentalnumber;
+        generateRentalnumber();
+    }
+    
+    private void generateRentalnumber() {
+        int rentalnumber = App.getCurrentRentalnumberCounter()+ 1;
+        App.setCurrentRentalnumberCounter(rentalnumber);
+        setRentalnumber(Integer.toString(rentalnumber));
     }
 
     public void calculatePrice() {

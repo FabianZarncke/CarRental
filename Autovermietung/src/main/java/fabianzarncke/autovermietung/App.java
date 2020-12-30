@@ -45,6 +45,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        setCurrentCustomernumberCounter(0);
+        setCurrentLicensnumberCounter(0);
+        setCurrentRentalnumberCounter(0);
         
         setCurrentMainListView("rentals");
         
@@ -76,7 +79,7 @@ public class App extends Application {
         PrivateCustomerModel pcustomer2 = new PrivateCustomerModel("John Wick", "Tony", "Stark", "29.05.1970", "Malibu Point", "0152765645");
         BusinessCustomerModel bcustomer1 = new BusinessCustomerModel("Microsoftvaley 34", "547635734538", "Bill", "Gates", "28.10.1955", "Washington", "5476865543");
         BusinessCustomerModel bcustomer2 = new BusinessCustomerModel("Google Way 69", "5453486454538", "Larry", "Page", "16.03.1973", "Michigan", "547544657365");
-        RentalModel rental1 = new RentalModel(car1, pcustomer1, "12.12.2012", "14:00", "12.12.2012", "13:00", 6, "000001");
+        RentalModel rental1 = new RentalModel(car1, pcustomer1, "12.12.2012", "14:00", "12.12.2012", "13:00", 6);
         
         addVehicle(truck1);
         addVehicle(truck2);

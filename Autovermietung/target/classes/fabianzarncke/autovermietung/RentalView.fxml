@@ -64,12 +64,12 @@
             <MenuItem mnemonicParsing="false" onAction="#BTNallBcustomers" style="-fx-font-size: 20;" text="all Business Customers" />
          </items>
       </MenuButton>
-      <Text layoutX="500.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 40;" text="Vehicle" textAlignment="CENTER" wrappingWidth="250.0" />
-      <Text layoutX="900.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 40;" text="Customer" textAlignment="CENTER" wrappingWidth="250.0" />
+      <Text fx:id="TXTvehicle" layoutX="500.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 40;" text="Vehicle" textAlignment="CENTER" wrappingWidth="250.0" />
+      <Text fx:id="TXTcustomer" layoutX="900.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 40;" text="Customer" textAlignment="CENTER" wrappingWidth="250.0" />
       <TextField fx:id="TFlicensnumber" editable="false" layoutX="500.0" layoutY="475.0" prefHeight="50.0" prefWidth="250.0" promptText="Licensnumber" style="-fx-font-size: 20; -fx-border-color: #000000; -fx-border-radius: 10; -fx-border-width: 2;" />
-      <Text layoutX="500.0" layoutY="470.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" text="Licensnumber:" />
+      <Text fx:id="TXTlicensnumber" layoutX="500.0" layoutY="470.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" text="Licensnumber:" />
       <TextField fx:id="TFcustomernumber" editable="false" layoutX="900.0" layoutY="470.0" prefHeight="50.0" prefWidth="250.0" promptText="Customernumber" style="-fx-font-size: 20; -fx-border-color: #000000; -fx-border-radius: 10; -fx-border-width: 2;" />
-      <Text layoutX="900.0" layoutY="465.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" text="Customernumber:" />
+      <Text fx:id="TXTcustomernumber" layoutX="900.0" layoutY="465.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" text="Customernumber:" />
       <Label fx:id="errorMessage" layoutX="625.0" layoutY="525.0" prefHeight="30.0" prefWidth="400.0" style="-fx-font-size: 20; -fx-text-fill: #FF0000;" text="Label" />
       <TextField fx:id="TFprice" editable="false" layoutX="25.0" layoutY="450.0" prefHeight="100.0" prefWidth="300.0" promptText="Price" style="-fx-font-size: 40; -fx-border-color: #000000; -fx-border-radius: 10; -fx-border-width: 2;" />
       <Text fx:id="TXTprice" layoutX="25.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" text="Price:" />

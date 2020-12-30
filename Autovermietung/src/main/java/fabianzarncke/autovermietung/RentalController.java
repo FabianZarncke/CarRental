@@ -70,6 +70,14 @@ public class RentalController implements Initializable {
     
     private String currentVehicle; //licensnumber
     private String currentCustomer; //customernumber
+    @FXML
+    private Text TXTvehicle;
+    @FXML
+    private Text TXTcustomer;
+    @FXML
+    private Text TXTlicensnumber;
+    @FXML
+    private Text TXTcustomernumber;
 
     /**
      * Initializes the controller class.
@@ -91,6 +99,17 @@ public class RentalController implements Initializable {
             BTNcancel.setVisible(false);
             BTNsave.setVisible(false);
             BTNmainAction.setVisible(true);
+            VehicleListView.setVisible(true);
+            CustomerListView.setVisible(true);
+            VehicleChooseViewMenuButton.setVisible(true);
+            CustomerChooseViewMenuButton.setVisible(true);
+            TFlicensnumber.setVisible(true);
+            TFcustomernumber.setVisible(true);
+            TXTprice.setVisible(false);
+            TXTvehicle.setVisible(true);
+            TXTcustomer.setVisible(true);
+            TXTlicensnumber.setVisible(true);
+            TXTcustomernumber.setVisible(true);
         }
         else if(App.getCurrentObjective().equals("view/rental")) {
             RentalModel currentRentalModel = null;
@@ -104,6 +123,17 @@ public class RentalController implements Initializable {
             BTNcancel.setVisible(false);
             BTNsave.setVisible(false);
             BTNmainAction.setVisible(false);
+            VehicleListView.setVisible(false);
+            CustomerListView.setVisible(false);
+            VehicleChooseViewMenuButton.setVisible(false);
+            CustomerChooseViewMenuButton.setVisible(false);
+            TFlicensnumber.setVisible(false);
+            TFcustomernumber.setVisible(false);
+            TXTprice.setVisible(true);
+            TXTvehicle.setVisible(false);
+            TXTcustomer.setVisible(false);
+            TXTlicensnumber.setVisible(false);
+            TXTcustomernumber.setVisible(false);
             
             String rnum = App.getRentals().get(App.getCurrentObejct()).getRentalnumber();
             for(RentalModel rental : App.getRentals()) {
@@ -129,7 +159,34 @@ public class RentalController implements Initializable {
 
 
     @FXML
-    private void BTNmainAction(ActionEvent event) {
+    private void BTNmainAction(ActionEvent event) throws IOException {
+        if(this.TFstartdate.getText().trim().isEmpty() || this.TFstarttime.getText().trim().isEmpty() || this.TFenddate.getText().trim().isEmpty() || this.TFendtime.getText().trim().isEmpty() || this.TFhours.getText().trim().isEmpty() || this.TFlicensnumber.getText().trim().isEmpty() || this.TFcustomernumber.getText().trim().isEmpty()) {
+            this.errorMessage.setText("please fill out every field!");
+            System.out.println("please fill out every field!");
+        }
+        else {
+            VehicleModel vehicle = null;
+            CustomerModel customer = null;
+            for(VehicleModel svehicle : App.getVehicles()) {
+                if(svehicle.getLicensenumber().equals(currentVehicle)) {
+                    vehicle = svehicle;
+                }
+            }
+            for(CustomerModel scustomer : App.getCustomers()) {
+                if(scustomer.getCustomernumber().equals(currentCustomer)) {
+                    customer = scustomer;
+                }
+            }
+            String startdate = TFstartdate.getText();
+            String starttime = TFstarttime.getText();
+            String enddate = TFenddate.getText();
+            String endtime = TFendtime.getText();
+            double hours = Double.valueOf(TFhours.getText());
+            RentalModel rental = new RentalModel(vehicle, customer, startdate, starttime, enddate, endtime, hours);
+            
+            App.addRental(rental);
+            App.setRoot("MainView");
+        }
     }
 
     @FXML
@@ -172,7 +229,7 @@ public class RentalController implements Initializable {
         for(VehicleModel vehicle : App.getVehicles()) {
             VehicleListView.getItems().add(vehicle.getBrand() + " " + vehicle.getName() + " " + vehicle.getLicensenumber() + " " + vehicle.isAvailable());
         }
-        App.setCurrentVehicleListView("trailers");
+        App.setCurrentVehicleListView("vehicles");
         this.VehicleChooseViewMenuButton.setText("all Vehicles");
     }
 
@@ -182,7 +239,7 @@ public class RentalController implements Initializable {
         for(TruckModel truck : App.getTrucks()) {
             VehicleListView.getItems().add(truck.getBrand() + " " + truck.getName() + " " + truck.getLicensenumber() + " " + truck.isAvailable());
         }
-        App.setCurrentVehicleListView("trailers");
+        App.setCurrentVehicleListView("trucks");
         this.VehicleChooseViewMenuButton.setText("all Truck");
     }
 
@@ -192,7 +249,7 @@ public class RentalController implements Initializable {
         for(CarModel car : App.getCars()) {
             VehicleListView.getItems().add(car.getBrand() + " " + car.getName() + " " + car.getLicensenumber() + " " + car.isAvailable());
         }
-        App.setCurrentVehicleListView("trailers");
+        App.setCurrentVehicleListView("cars");
         this.VehicleChooseViewMenuButton.setText("all Cars");
     }
 
@@ -202,7 +259,7 @@ public class RentalController implements Initializable {
         for(VanModel van : App.getVans()) {
             VehicleListView.getItems().add(van.getBrand() + " " + van.getName() + " " + van.getLicensenumber() + " " + van.isAvailable());
         }
-        App.setCurrentVehicleListView("trailers");
+        App.setCurrentVehicleListView("vans");
         this.VehicleChooseViewMenuButton.setText("all Vans");
     }
 
@@ -223,7 +280,7 @@ public class RentalController implements Initializable {
             CustomerListView.getItems().add(customer.getFirstname() + " " + customer.getLastname() + " " + customer.getCustomernumber() + " " + customer.isMaylend());
         }
         App.setCurrentCustomerListView("pcustomers");
-        this.CustomerChooseViewMenuButton.setText("all Private Customers");
+        this.CustomerChooseViewMenuButton.setText("all Customers");
     }
 
     @FXML
