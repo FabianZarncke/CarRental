@@ -80,6 +80,8 @@ public class App extends Application {
         BusinessCustomerModel bcustomer1 = new BusinessCustomerModel("Microsoftvaley 34", "547635734538", "Bill", "Gates", "28.10.1955", "Washington", "5476865543");
         BusinessCustomerModel bcustomer2 = new BusinessCustomerModel("Google Way 69", "5453486454538", "Larry", "Page", "16.03.1973", "Michigan", "547544657365");
         RentalModel rental1 = new RentalModel(car1, pcustomer1, "12.12.2012", "14:00", "12.12.2012", "13:00", 6);
+        car1.setInUse(true);
+        car1.checkAvailability();
         
         addVehicle(truck1);
         addVehicle(truck2);

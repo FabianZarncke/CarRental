@@ -164,7 +164,7 @@ public class RentalController implements Initializable {
             this.errorMessage.setText("please fill out every field!");
             System.out.println("please fill out every field!");
         }
-        else {
+        else{
             VehicleModel vehicle = null;
             CustomerModel customer = null;
             for(VehicleModel svehicle : App.getVehicles()) {
@@ -184,6 +184,8 @@ public class RentalController implements Initializable {
             double hours = Double.valueOf(TFhours.getText());
             RentalModel rental = new RentalModel(vehicle, customer, startdate, starttime, enddate, endtime, hours);
             
+            vehicle.setInUse(true);
+            vehicle.checkAvailability();
             App.addRental(rental);
             App.setRoot("MainView");
         }
@@ -227,7 +229,9 @@ public class RentalController implements Initializable {
     private void BTNallVehicles(ActionEvent event) {
         VehicleListView.getItems().clear();
         for(VehicleModel vehicle : App.getVehicles()) {
-            VehicleListView.getItems().add(vehicle.getBrand() + " " + vehicle.getName() + " " + vehicle.getLicensenumber() + " " + vehicle.isAvailable());
+            if(vehicle.isAvailable() == true) {
+                VehicleListView.getItems().add(vehicle.getBrand() + " " + vehicle.getName() + " " + vehicle.getLicensenumber());
+            }
         }
         App.setCurrentVehicleListView("vehicles");
         this.VehicleChooseViewMenuButton.setText("all Vehicles");
@@ -237,7 +241,9 @@ public class RentalController implements Initializable {
     private void BTNallTrucks(ActionEvent event) {
         VehicleListView.getItems().clear();
         for(TruckModel truck : App.getTrucks()) {
-            VehicleListView.getItems().add(truck.getBrand() + " " + truck.getName() + " " + truck.getLicensenumber() + " " + truck.isAvailable());
+            if(truck.isAvailable() == true) {
+                VehicleListView.getItems().add(truck.getBrand() + " " + truck.getName() + " " + truck.getLicensenumber());
+            }
         }
         App.setCurrentVehicleListView("trucks");
         this.VehicleChooseViewMenuButton.setText("all Truck");
@@ -247,7 +253,9 @@ public class RentalController implements Initializable {
     private void BTNallCars(ActionEvent event) {
         VehicleListView.getItems().clear();
         for(CarModel car : App.getCars()) {
-            VehicleListView.getItems().add(car.getBrand() + " " + car.getName() + " " + car.getLicensenumber() + " " + car.isAvailable());
+            if(car.isAvailable() == true) {
+                VehicleListView.getItems().add(car.getBrand() + " " + car.getName() + " " + car.getLicensenumber());
+            }
         }
         App.setCurrentVehicleListView("cars");
         this.VehicleChooseViewMenuButton.setText("all Cars");
@@ -257,7 +265,9 @@ public class RentalController implements Initializable {
     private void BTNallVans(ActionEvent event) {
         VehicleListView.getItems().clear();
         for(VanModel van : App.getVans()) {
-            VehicleListView.getItems().add(van.getBrand() + " " + van.getName() + " " + van.getLicensenumber() + " " + van.isAvailable());
+            if(van.isAvailable() == true) {
+                VehicleListView.getItems().add(van.getBrand() + " " + van.getName() + " " + van.getLicensenumber());
+            }
         }
         App.setCurrentVehicleListView("vans");
         this.VehicleChooseViewMenuButton.setText("all Vans");
@@ -267,7 +277,9 @@ public class RentalController implements Initializable {
     private void BTNallTrailers(ActionEvent event) {
         VehicleListView.getItems().clear();
         for(TrailerModel trailer : App.getTrailers()) {
-            VehicleListView.getItems().add(trailer.getBrand() + " " + trailer.getName() + " " + trailer.getLicensenumber() + " " + trailer.isAvailable());
+            if(trailer.isAvailable() == true) {
+                VehicleListView.getItems().add(trailer.getBrand() + " " + trailer.getName() + " " + trailer.getLicensenumber());
+            }
         }
         App.setCurrentVehicleListView("trailers");
         this.VehicleChooseViewMenuButton.setText("all Trailers");
@@ -277,7 +289,9 @@ public class RentalController implements Initializable {
     private void BTNallCustomers(ActionEvent event) {
         CustomerListView.getItems().clear();
         for(CustomerModel customer : App.getCustomers()) {
-            CustomerListView.getItems().add(customer.getFirstname() + " " + customer.getLastname() + " " + customer.getCustomernumber() + " " + customer.isMaylend());
+            if(customer.isMaylend() == true) {
+                CustomerListView.getItems().add(customer.getFirstname() + " " + customer.getLastname() + " " + customer.getCustomernumber());
+            }
         }
         App.setCurrentCustomerListView("pcustomers");
         this.CustomerChooseViewMenuButton.setText("all Customers");
@@ -287,7 +301,9 @@ public class RentalController implements Initializable {
     private void BTNallPcustomers(ActionEvent event) {
         CustomerListView.getItems().clear();
         for(PrivateCustomerModel pcustomer : App.getPcustomers()) {
-            CustomerListView.getItems().add(pcustomer.getFirstname() + " " + pcustomer.getLastname() + " " + pcustomer.getCustomernumber() + " " + pcustomer.isMaylend());
+            if(pcustomer.isMaylend() == true) {
+                CustomerListView.getItems().add(pcustomer.getFirstname() + " " + pcustomer.getLastname() + " " + pcustomer.getCustomernumber());
+            }
         }
         App.setCurrentCustomerListView("pcustomers");
         this.CustomerChooseViewMenuButton.setText("all Private Customers");
@@ -297,7 +313,9 @@ public class RentalController implements Initializable {
     private void BTNallBcustomers(ActionEvent event) {
         CustomerListView.getItems().clear();
         for(BusinessCustomerModel bcustomer : App.getBcustomers()) {
-            CustomerListView.getItems().add(bcustomer.getFirstname() + " " + bcustomer.getLastname() + " " + bcustomer.getCustomernumber() + " " + bcustomer.isMaylend());
+            if(bcustomer.isMaylend() == true) {
+                CustomerListView.getItems().add(bcustomer.getFirstname() + " " + bcustomer.getLastname() + " " + bcustomer.getCustomernumber());
+            }
         }
         App.setCurrentCustomerListView("pcustomers");
         this.CustomerChooseViewMenuButton.setText("all Business Customers");
@@ -351,7 +369,7 @@ public class RentalController implements Initializable {
         }
         else {
             System.out.println("There is not the right value set in App.getCurrentMainListView()");
-        }
+        }   
     }
 
     @FXML

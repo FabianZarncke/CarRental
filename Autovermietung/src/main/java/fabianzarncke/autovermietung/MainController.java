@@ -135,7 +135,7 @@ public class MainController implements Initializable {
     @FXML
     private void startRentalBTN(ActionEvent event) throws IOException {
         App.setCurrentObjective("start/rental");
-        App.setRoot("RentalView");
+        App.setRoot("TestView");
     }
 
     @FXML
@@ -291,6 +291,23 @@ public class MainController implements Initializable {
             App.setCurrentObjective("view/rental");
             App.setRoot("RentalView");
         }
+        else if(App.getCurrentMainListView().equals("all")) {
+            if(ListView.getSelectionModel().getSelectedItem().startsWith("Customer:")) {
+                App.setCurrentObjective("view/customer");
+                App.setRoot("CustomerView");
+            }
+            else if(ListView.getSelectionModel().getSelectedItem().startsWith("Vehicle:")) {
+                App.setCurrentObjective("view/vehicle");
+                App.setRoot("VehicleView");
+            }
+            else if(ListView.getSelectionModel().getSelectedItem().startsWith("Rental:")) {
+                App.setCurrentObjective("view/rental");
+                App.setRoot("RentalView");
+            }
+            else {
+                System.out.println("There is no right Value set at the beginning of the String.");
+            }
+        }
         else {
             System.out.println("There is not the right value set in App.getCurrentMainListView()");
         }
@@ -310,22 +327,23 @@ public class MainController implements Initializable {
         String search = searchbar.getText();
         for(VehicleModel vehicle : App.getVehicles()) {
             String allData = vehicle.getAllData();
-            if(allData.contains(search)) {
+            if(allData.toLowerCase().contains(search.toLowerCase())) {
                 ListView.getItems().add("Vehicle: " + vehicle.getAllData());
             }
         }
         for(CustomerModel customer : App.getCustomers()) {
             String allData = customer.getAllData();
-            if(allData.contains(search)) {
+            if(allData.toLowerCase().contains(search.toLowerCase())) {
                 ListView.getItems().add("Customer: " + customer.getAllData());
             }
         }
         for(RentalModel rental : App.getRentals()) {
             String allData = rental.getAllData();
-            if(allData.contains(search)) {
+            if(allData.toLowerCase().contains(search.toLowerCase())) {
                 ListView.getItems().add("Rental: " + rental.getAllData());
             }
         }
+        App.setCurrentMainListView("all");
     }
     
 }
