@@ -209,6 +209,7 @@ public class CustomerController implements Initializable {
             TFphonenumber.setText(currentPrivateCustomer.getPhonenumber());
             CBmaylend.setSelected(currentPrivateCustomer.isMaylend());
             TFcontact.setText(currentPrivateCustomer.getContact());
+            TFcustomernumber.setText(currentPrivateCustomer.getCustomernumber());
             
         }
         else if(App.getCurrentObjective().equals("view/bcustomer")) {
@@ -275,6 +276,7 @@ public class CustomerController implements Initializable {
             CBmaylend.setSelected(currentBusinesscustomer.isMaylend());
             TFbusinessadress.setText(currentBusinesscustomer.getBusinessAdress());
             TFbusinessphonenumber.setText(currentBusinesscustomer.getBusinessPhonenumber());
+            TFcustomernumber.setText(currentBusinesscustomer.getCustomernumber());
        }
     }    
 
