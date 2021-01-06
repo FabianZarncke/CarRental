@@ -1,8 +1,10 @@
 fabianzarncke\autovermietung\MainController.class
 fabianzarncke\autovermietung\VehicleModel.class
 fabianzarncke\autovermietung\RentalModel.class
+fabianzarncke\autovermietung\Person.class
 fabianzarncke\autovermietung\TruckModel.class
 fabianzarncke\autovermietung\App.class
+fabianzarncke\autovermietung\TestController.class
 fabianzarncke\autovermietung\CarModel.class
 fabianzarncke\autovermietung\DataProvider.class
 fabianzarncke\autovermietung\CustomerController.class

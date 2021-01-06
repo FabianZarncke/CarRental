@@ -135,7 +135,7 @@ public class MainController implements Initializable {
     @FXML
     private void startRentalBTN(ActionEvent event) throws IOException {
         App.setCurrentObjective("start/rental");
-        App.setRoot("TestView");
+        App.setRoot("RentalView");
     }
 
     @FXML

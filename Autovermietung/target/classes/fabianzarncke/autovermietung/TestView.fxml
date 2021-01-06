@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="fabianzarncke.autovermietung.TestController">
+   <children>
+      <TableView fx:id="TableView" layoutX="169.0" layoutY="75.0" prefHeight="209.0" prefWidth="273.0">
+        <columns>
+          <TableColumn fx:id="c1" prefWidth="75.0" text="C1" />
+          <TableColumn fx:id="c2" prefWidth="75.0" text="C2" />
+            <TableColumn fx:id="c3" prefWidth="75.0" text="C3" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
